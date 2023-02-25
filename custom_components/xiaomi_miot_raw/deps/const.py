@@ -37,18 +37,18 @@ DUMMY_IP = "255.255.255.255"
 DUMMY_TOKEN = "00000000000000000000000000000000"
 
 SCHEMA = {
-        vol.Required(CONF_HOST): cv.string,
-        vol.Required(CONF_TOKEN): vol.All(cv.string, vol.Length(min=32, max=32)),
-        vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-        vol.Optional(CONF_UPDATE_INSTANT, default=True): cv.boolean,
-        vol.Optional(CONF_CLOUD): vol.All(),
-        vol.Optional('cloud_write'):vol.All(),
+    vol.Required(CONF_HOST): cv.string,
+    vol.Required(CONF_TOKEN): vol.All(cv.string, vol.Length(min=32, max=32)),
+    vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
+    vol.Optional(CONF_UPDATE_INSTANT, default=True): cv.boolean,
+    vol.Optional(CONF_CLOUD): vol.All(),
+    vol.Optional('cloud_write'): vol.All(),
 
-        vol.Required(CONF_MAPPING):vol.All(),
-        vol.Required(CONF_CONTROL_PARAMS):vol.All(),
+    vol.Required(CONF_MAPPING): vol.All(),
+    vol.Required(CONF_CONTROL_PARAMS): vol.All(),
 
-        vol.Optional(CONF_SENSOR_PROPERTY): cv.string,
-        vol.Optional(CONF_SENSOR_UNIT): cv.string,
+    vol.Optional(CONF_SENSOR_PROPERTY): cv.string,
+    vol.Optional(CONF_SENSOR_UNIT): cv.string,
 }
 
 SERVICE_SCHEMA = vol.Schema({vol.Optional(ATTR_ENTITY_ID): cv.entity_ids})
@@ -56,31 +56,31 @@ SERVICE_TO_METHOD = {
     'speak_text': {
         "method": "async_speak_text",
         "schema": SERVICE_SCHEMA.extend({
-                vol.Required('text'): cv.string,
-            })
+            vol.Required('text'): cv.string,
+        })
     },
     'execute_text': {
         "method": "async_execute_text",
         "schema": SERVICE_SCHEMA.extend({
-                vol.Required('text'): cv.string,
-                vol.Optional('silent'): cv.boolean,
-            })
+            vol.Required('text'): cv.string,
+            vol.Optional('silent'): cv.boolean,
+        })
     },
     'call_action': {
         "method": "call_action_new",
         "schema": SERVICE_SCHEMA.extend({
-                vol.Required('siid'): vol.All(),
-                vol.Required('aiid'): vol.All(),
-                vol.Optional('inn'): vol.All(),
-            })
+            vol.Required('siid'): vol.All(),
+            vol.Required('aiid'): vol.All(),
+            vol.Optional('inn'): vol.All(),
+        })
     },
     'set_miot_property': {
         "method": "set_property_for_service",
         "schema": SERVICE_SCHEMA.extend({
-                vol.Required('siid'): vol.All(),
-                vol.Required('piid'): vol.All(),
-                vol.Required('value'): vol.All(),
-            })
+            vol.Required('siid'): vol.All(),
+            vol.Required('piid'): vol.All(),
+            vol.Required('value'): vol.All(),
+        })
     },
 }
 
@@ -223,19 +223,19 @@ MAP = {
 }
 
 UNIT_MAPPING = {
-    "percentage" : PERCENTAGE                                , # 百分比
-    "celsius"    : TEMP_CELSIUS                              , # 摄氏度
-    "seconds"    : "秒"                                      , # 秒
-    "minutes"    : "分钟"                                    , # 分
-    "hours"      : "小时"                                    , # 小时
-    "days"       : "天"                                      , # 天
-    "kelvin"     : TEMP_KELVIN                               , # 开氏温标
-    "pascal"     : "Pa"                                      , # 帕斯卡(大气压强单位)
-    "arcdegrees" : "rad"                                     , # 弧度(角度单位)
-    "rgb"        : "RGB"                                     , # RGB(颜色)
-    "watt"       : POWER_WATT                                , # 瓦特(功率)
-    "litre"      : VOLUME_LITERS                             , # 升
-    "ppm"        : CONCENTRATION_PARTS_PER_MILLION           , # ppm浓度
-    "lux"        : LIGHT_LUX                                 , # 勒克斯(照度)
-    "mg/m3"      : CONCENTRATION_MILLIGRAMS_PER_CUBIC_METER  , # 毫克每立方米
+    "percentage": PERCENTAGE,
+    "celsius": TEMP_CELSIUS,
+    "seconds": "seconds",
+    "minutes": "minutes",
+    "hours": "hours",
+    "days": "days",
+    "kelvin": TEMP_KELVIN,
+    "pascal": "Pa",
+    "arcdegrees": "rad",
+    "rgb": "RGB",
+    "watt": POWER_WATT,
+    "litre": VOLUME_LITERS,
+    "ppm": CONCENTRATION_PARTS_PER_MILLION,
+    "lux": LIGHT_LUX,
+    "mg/m3": CONCENTRATION_MILLIGRAMS_PER_CUBIC_METER,
 }
